@@ -10,7 +10,7 @@ The following libraries are required to build it:
 - [asm-debug-all:4.1](https://mvnrepository.com/artifact/org.ow2.asm/asm-debug-all/4.1)
 - [guava:14.0.1](https://mvnrepository.com/artifact/com.google.guava/guava/14.0.1)
 - launchwrapper:1.8
-- fml-universal:1.6.4-6.4.49.1-1.6.4 (you may need to compile this manually)
+- forge-1.6.4-9.11.1.1345-universal.jar (get it from [MinecraftForge](https://files.minecraftforge.net/net/minecraftforge/forge/index_1.6.4.html))
 
 Suggested is putting these in the `lib` folder, then adding them in IDEA in the Project Structure under Libraries.
 
