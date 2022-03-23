@@ -6,13 +6,8 @@ import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 import java.util.Map;
 
 @IFMLLoadingPlugin.TransformerExclusions({"blue.heldplayer.legacypatch"})
-@IFMLLoadingPlugin.MCVersion("1.6.4")
+@IFMLLoadingPlugin.MCVersion("1.7.10")
 public class Plugin implements IFMLLoadingPlugin, IFMLCallHook {
-    @Override
-    public String[] getLibraryRequestClass() {
-        return new String[0];
-    }
-
     @Override
     public String[] getASMTransformerClass() {
         return new String[]{"blue.heldplayer.legacypatch.PortalGunPatcher"};
@@ -30,6 +25,11 @@ public class Plugin implements IFMLLoadingPlugin, IFMLCallHook {
 
     @Override
     public void injectData(Map<String, Object> map) {
+    }
+
+    @Override
+    public String getAccessTransformerClass() {
+        return null;
     }
 
     @Override

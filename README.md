@@ -10,7 +10,7 @@ The following libraries are required to build it:
 - [asm-debug-all:4.1](https://mvnrepository.com/artifact/org.ow2.asm/asm-debug-all/4.1)
 - [guava:14.0.1](https://mvnrepository.com/artifact/com.google.guava/guava/14.0.1)
 - launchwrapper:1.8
-- fml-universal:1.6.4-6.4.49.1-1.6.4 (you may need to compile this manually)
+- forge-1.7.10-10.13.4.1614-1.7.10-universal.jar (get it from [MinecraftForge](https://files.minecraftforge.net/net/minecraftforge/forge/index_1.7.10.html))
 
 Suggested is putting these in the `lib` folder, then adding them in IDEA in the Project Structure under Libraries.
 
@@ -18,7 +18,6 @@ Afterwards, building is as simple as building the artifact in Build > Build Arti
 
 ## Minecraft classes
 
-Note that it this method does not allow compiling anything making use of Minecraft class names, the reason for this is that I did not manage get a working 1.6.4 dev instance, even after trying to massage Gradle a whole bunch.
-Unfortunately this may be a result of the way ForgeGradle worked back in the day, and there may be no way to get it working other than compiling a custom version of ForgeGradle itself based on the original source from then.
+Note that it this method does not allow compiling anything making use of Minecraft class names, as this is a simple copy of the 1.6.4 branch.
 
-For now, this is too much effort for something that is not required. If the need arises I'd be grateful for somebody to take a look into making it possible.
+It might be possible to get a dev workspace in 1.7.10, but right now this is not necessary so no effort has been put in.

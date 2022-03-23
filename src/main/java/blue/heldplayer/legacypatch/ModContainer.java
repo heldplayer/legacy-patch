@@ -14,7 +14,7 @@ public class ModContainer extends DummyModContainer {
         ModMetadata meta = this.getMetadata();
         meta.modId = "legacy-patch";
         meta.name = "Legacy Patch";
-        meta.version = "1.6.4.1";
+        meta.version = "1.7.10.1";
         meta.authorList = Collections.singletonList("heldplayer");
         meta.description = "Coremod to Patch iChun's Portal Gun mod";
         meta.url = "https://github.com/heldplayer/legacy-patch";
