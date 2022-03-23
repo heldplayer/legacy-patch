@@ -4,3 +4,4 @@
 
 Links to versions of this mod:
 - [Minecraft 1.6.4](https://github.com/heldplayer/legacy-patch/tree/1.6.4)
+- [Minecraft 1.7.10](https://github.com/heldplayer/legacy-patch/tree/1.7.10)
