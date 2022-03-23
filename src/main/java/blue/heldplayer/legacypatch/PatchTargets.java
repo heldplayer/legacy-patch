@@ -18,25 +18,28 @@ public class PatchTargets {
     private static final SSLSocketFactory SOCKET_FACTORY;
 
     static {
-        // https://stackoverflow.com/a/859271
-
         SSLSocketFactory factory = null;
-        try {
-            SSLContext context = SSLContext.getInstance("TLS");
 
-            KeyStore keyStore = KeyStore.getInstance("Windows-ROOT"); // https://stackoverflow.com/a/49011158
-            keyStore.load(null, null); // https://stackoverflow.com/a/5510555
-            TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-            tmf.init(keyStore);
+        if (System.getProperty("os.name").startsWith("Windows")) {
+            // https://stackoverflow.com/a/859271
 
-            context.init(null, tmf.getTrustManagers(), null);
+            try {
+                SSLContext context = SSLContext.getInstance("TLS");
 
-            factory = context.getSocketFactory();
-        } catch (GeneralSecurityException ignored) {
-        } catch (IOException ignored) {
-        } finally {
-            SOCKET_FACTORY = factory;
-        }
+                KeyStore keyStore = KeyStore.getInstance("Windows-ROOT"); // https://stackoverflow.com/a/49011158
+                keyStore.load(null, null); // https://stackoverflow.com/a/5510555
+                TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+                tmf.init(keyStore);
+
+                context.init(null, tmf.getTrustManagers(), null);
+
+                factory = context.getSocketFactory();
+            } catch (GeneralSecurityException ignored) {
+            } catch (IOException ignored) {
+            }
+        } //
+
+        SOCKET_FACTORY = factory;
     }
 
     public static final String OPEN_ASSETS_XML_STREAM_DESC = "()Ljava/io/InputStream;";
@@ -47,7 +50,10 @@ public class PatchTargets {
             HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
             connection.setConnectTimeout(60000);
             connection.setReadTimeout(60000);
-            connection.setSSLSocketFactory(SOCKET_FACTORY);
+
+            if (SOCKET_FACTORY != null)
+                connection.setSSLSocketFactory(SOCKET_FACTORY);
+
             return connection.getInputStream();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -59,7 +65,9 @@ public class PatchTargets {
     public static void patchSecurityCertificates(URLConnection con) {
         if (con instanceof HttpsURLConnection) {
             HttpsURLConnection connection = (HttpsURLConnection) con;
-            connection.setSSLSocketFactory(SOCKET_FACTORY);
+
+            if (SOCKET_FACTORY != null)
+                connection.setSSLSocketFactory(SOCKET_FACTORY);
         }
     }
 
