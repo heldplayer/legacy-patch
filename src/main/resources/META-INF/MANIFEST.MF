@@ -1,2 +1,2 @@
 Manifest-Version: 1.0
-FMLCorePlugin: blue.heldplayer.pgpatch.Plugin
+FMLCorePlugin: blue.heldplayer.legacypatch.Plugin
